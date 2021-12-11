@@ -40,6 +40,8 @@
 								if(a!=null){
 									session.setAttribute("admin", a);
 									response.sendRedirect("account.jsp");
+								}else{
+									response.sendRedirect("login.jsp");
 								}
 							}
 						%> 
