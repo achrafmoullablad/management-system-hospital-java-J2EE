@@ -44,8 +44,8 @@
 				      <td><%= md.getAdresse() %></td>
 				      <td><%= md.getTelephone() %></td>
 				      <td><%= md.getStatus() %></td>
-				      <td><span class="badge bg-warning"><a class="text-dark" href='id=<%= md.getId()  %>'>Update</a></span></td>
-				      <td><span class="badge bg-danger"><a class="text-dark" href='id=<%= md.getId() %>'>Delete</a></span></td>
+				      <td><span class="badge bg-warning"><a class="text-dark" href='pages/updateMedcin.jsp?id=<%= md.getId()  %>'>Update</a></span></td>
+				      <td><span class="badge bg-danger"><a class="text-dark" onclick="return confirm('Are you sure to delete this Medcin')" href='pages/deleteMedcin.jsp?id=<%= md.getId() %>'>Delete</a></span></td>
 				    </tr>
 				    <% } %>
 				  </tbody>

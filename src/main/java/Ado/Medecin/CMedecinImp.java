@@ -24,8 +24,8 @@ public class CMedecinImp implements IMedecin{
 	@Override
 	public int modifyMedcin(Medecin md,int id) {
 		ado.connect();
-		String sql="UPDATE medecin SET Nom='"+md.getNom()+"',Username='"+md.getUsername()+"','Email="+md.getEmail()+"',Password='"+md.getPassword()+
-				"',Adresse='"+md.getAdresse()+"',Telephone='"+md.getTelephone()+"',status='"+md.getStatus()+"'";
+		String sql="UPDATE medecin SET Nom='"+md.getNom()+"', Username='"+md.getUsername()+"', Email='"+md.getEmail()+"', Password='"+md.getPassword()+
+				"', Adresse='"+md.getAdresse()+"', Telephone='"+md.getTelephone()+"', status='"+md.getStatus()+"' WHERE id='"+id+"'";
 		int nb=ado.MAJ(sql);
 		ado.disconnect();
 		return nb;
