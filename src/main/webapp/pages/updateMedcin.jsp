@@ -284,8 +284,8 @@
 						  <input type="text" class="form-control" id="nom" name="nom" value="<%= me.getNom() %>">
 						</div>
 						<div class="mb-2">
-						  <label for="username" class="form-label">Username</label>
-						  <input type="text" class="form-control" id="username" name="username" value="<%= me.getUsername() %>">
+						  <label for="prenom" class="form-label">prenom</label>
+						  <input type="text" class="form-control" id="prenom" name="prenom" value="<%= me.getprenom() %>">
 						</div>
 						<div class="mb-2">
 							<label for="email" class="form-label">Email</label>
@@ -315,14 +315,14 @@
     </div><!--//app-wrapper-->   
 	<% 
 		String nom=request.getParameter("nom");
-		String username=request.getParameter("username");
+		String prenom=request.getParameter("prenom");
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String adresse=request.getParameter("adresse");
 		String telephone=request.getParameter("telephone");
 		String status=request.getParameter("status");
-		if(nom!=null && username!=null && email!=null && password!=null && adresse!=null && telephone!=null){
-			Medecin md=new Medecin(nom,username,email,password,adresse,telephone,status);
+		if(nom!=null && prenom!=null && email!=null && password!=null && adresse!=null && telephone!=null){
+			Medecin md=new Medecin(nom,prenom,email,password,adresse,telephone,status);
 			CMedecinImp cm=new CMedecinImp();
 			cm.modifyMedcin(md, me.getId());
 		}
@@ -337,7 +337,7 @@
 	<script src="../assets/plugins/chart.js/chart.min.js"></script> 
 	<%
 		}else{
-	        response.sendRedirect("login.jsp");
+	        response.sendRedirect("../login.jsp");
 	    }
 	%>
 </body>

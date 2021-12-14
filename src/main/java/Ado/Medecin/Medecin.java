@@ -2,16 +2,16 @@ package Ado.Medecin;
 public class Medecin {
 	private int id;
 	private String Nom;
-	private String Username;
+	private String prenom;
 	private String Email;
 	private String Password;
 	private String Adresse;
 	private String Telephone;
 	private String status;
 	public Medecin() {}
-	public Medecin(String nom, String username, String email, String password, String adresse, String telephone,String status) {
+	public Medecin(String nom, String prenom, String email, String password, String adresse, String telephone,String status) {
 		this.Nom = nom;
-		this.Username = username;
+		this.prenom = prenom;
 		this.Email = email;
 		this.Password = password;
 		this.Adresse = adresse;
@@ -30,11 +30,11 @@ public class Medecin {
 	public void setNom(String nom) {
 		Nom = nom;
 	}
-	public String getUsername() {
-		return Username;
+	public String getprenom() {
+		return prenom;
 	}
-	public void setUsername(String username) {
-		Username = username;
+	public void setprenom(String prenom) {
+		this.prenom = prenom;
 	}
 	public String getEmail() {
 		return Email;
@@ -68,7 +68,7 @@ public class Medecin {
 	}
 	@Override
 	public String toString() {
-		return "Medecin [id=" + id + ", Nom=" + Nom + ", Username=" + Username + ", Email=" + Email + ", Password="
+		return "Medecin [id=" + id + ", Nom=" + Nom + ", prenom=" + prenom + ", Email=" + Email + ", Password="
 				+ Password + ", Adresse=" + Adresse + ", Telephone=" + Telephone + ", status=" + status + "]";
 	}
 }

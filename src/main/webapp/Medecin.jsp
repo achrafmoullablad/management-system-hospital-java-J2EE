@@ -15,15 +15,15 @@
 				<div class="col-lg-8 col-12">
 					<%
 						String nom=request.getParameter("nom");
-						String username=request.getParameter("username");
+						String prenom=request.getParameter("prenom");
 						String email=request.getParameter("email");
 						String password=request.getParameter("password");
 						String adresse=request.getParameter("adresse");
 						String telephone=request.getParameter("telephone");
 						String status=request.getParameter("status");
 						String message="";
-						if(nom!=null && username!=null && email!=null && password!=null && adresse!=null && telephone!=null && status!=null){
-							Medecin md=new Medecin(nom,username,email,password,adresse,telephone,status);
+						if(nom!=null && prenom!=null && email!=null && password!=null && adresse!=null && telephone!=null && status!=null){
+							Medecin md=new Medecin(nom,prenom,email,password,adresse,telephone,status);
 							CMedecinImp cm=new CMedecinImp();
 							int nb=cm.addMedcien(md);
 							if(nb==1){
@@ -38,8 +38,8 @@
 						  <input type="text" class="form-control" id="nom" name="nom">
 						</div>
 						<div class="mb-2">
-						  <label for="username" class="form-label">Username</label>
-						  <input type="text" class="form-control" id="username" name="username">
+						  <label for="prenom" class="form-label">Prenom</label>
+						  <input type="text" class="form-control" id="prenom" name="prenom">
 						</div>
 						<div class="mb-2">
 							<label for="email" class="form-label">Email</label>

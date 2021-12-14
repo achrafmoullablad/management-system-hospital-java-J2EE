@@ -14,7 +14,7 @@ public class CMedecinImp implements IMedecin{
 	@Override
 	public int addMedcien(Medecin md) {
 		ado.connect();
-		String sql="INSERT INTO medecin VALUES(null,'"+md.getNom()+"','"+md.getUsername()+"','"+md.getEmail()+"','"+md.getPassword()+"',"
+		String sql="INSERT INTO medecin VALUES(null,'"+md.getNom()+"','"+md.getprenom()+"','"+md.getEmail()+"','"+md.getPassword()+"',"
 				+ "'"+md.getAdresse()+"','"+md.getTelephone()+"','"+md.getStatus()+"')";
 		int nb=ado.MAJ(sql);
 		ado.disconnect();
@@ -24,7 +24,7 @@ public class CMedecinImp implements IMedecin{
 	@Override
 	public int modifyMedcin(Medecin md,int id) {
 		ado.connect();
-		String sql="UPDATE medecin SET Nom='"+md.getNom()+"', Username='"+md.getUsername()+"', Email='"+md.getEmail()+"', Password='"+md.getPassword()+
+		String sql="UPDATE medecin SET Nom='"+md.getNom()+"', prenom='"+md.getprenom()+"', Email='"+md.getEmail()+"', Password='"+md.getPassword()+
 				"', Adresse='"+md.getAdresse()+"', Telephone='"+md.getTelephone()+"', status='"+md.getStatus()+"' WHERE id='"+id+"'";
 		int nb=ado.MAJ(sql);
 		ado.disconnect();

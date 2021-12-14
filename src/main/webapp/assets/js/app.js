@@ -93,4 +93,6 @@ searchMobileTrigger.addEventListener('click', () => {
 	
 });
 
-
+$(document).ready( function () {
+	  $('#myTable').DataTable();
+} );

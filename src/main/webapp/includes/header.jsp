@@ -9,8 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PARMACO">
-    <script defer src="assets/plugins/fontawesome/js/all.min.js"></script> 
-    <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
+    <link rel="stylesheet" href="assets/font-awesome/all.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/dataTables.min.css">
+    <link rel="stylesheet" href="assets/css/portal.css">
 </head> 
 <body class="app">    	
     <header class="app-header fixed-top">	   	            
