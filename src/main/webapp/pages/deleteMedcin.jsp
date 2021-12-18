@@ -20,7 +20,7 @@
 		response.sendRedirect("../ShowMedecin.jsp");
 	%>
 	<% }else{
-	        response.sendRedirect("login.jsp");
+	        response.sendRedirect("../login.jsp");
 	    } 
 	%>
 </body>

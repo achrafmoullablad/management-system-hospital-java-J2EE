@@ -39,7 +39,7 @@
 								Admin a=ma.Authentification(username,password);
 								if(a!=null){
 									session.setAttribute("admin", a);
-									response.sendRedirect("account.jsp");
+									response.sendRedirect("index.jsp");
 								}else{
 									response.sendRedirect("login.jsp");
 								}

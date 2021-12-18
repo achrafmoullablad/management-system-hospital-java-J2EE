@@ -9,8 +9,14 @@
 	if(a!=null){		      
 %> 
 <%@include file="includes/header.jsp" %>
+<style>
+	#mycontent{
+		background: linear-gradient(45deg, greenyellow, dodgerblue);
+	}
+
+</style>
  <div class="app-wrapper">
-	   <div class="container">
+	   <div class="container" id="mycontent" >
 			<div class="row justify-content-center">
 				<div class="col-lg-8 col-12">
 					<%

@@ -77,5 +77,40 @@ public class CMedecinImp implements IMedecin{
 		ado.disconnect();
 		return nb;
 	}
-	
+	@Override
+	public Medecin SearchMedecin(String motcle) {
+		Medecin md=null;
+		ado.connect();
+		String sql="SELECT * FROM medecin where Nom like '%"+motcle+"%' OR  prenom like '%"+motcle+"%' OR Email like '%"+motcle+"%' OR Adresse like '%"+motcle+"%' OR Telephone like '%"+motcle+"%'";
+		ResultSet rs=ado.select(sql);
+		try {
+			while(rs.next()) {
+				md=new Medecin(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+				md.setId(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		ado.disconnect();
+		return md;
+	}
+	@Override
+	public List<Medecin> getMedecinDisponible() {
+		Medecin md=null;
+		List<Medecin> lm=new ArrayList<Medecin>();
+		ado.connect();
+		String sql="SELECT * FROM medecin where status='Disponible'";
+		ResultSet rs=ado.select(sql);
+		try {
+			while(rs.next()) {
+				md=new Medecin(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+				md.setId(rs.getInt(1));
+				lm.add(md);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		ado.disconnect();
+		return lm;
+	}
 }

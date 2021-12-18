@@ -1,3 +1,6 @@
+<%@page import="Ado.Medicament.Medicament"%>
+<%@page import="java.util.List"%>
+<%@page import="Ado.Medicament.CMedicamentImp"%>
 <%@page import="Ado.Admin.Admin"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -5,50 +8,54 @@
 	Admin a=(Admin)session.getAttribute("admin");
 	if(a!=null){		      
 %> 
-<%@include file="../includes/header.jsp" %>
+<%@include file="header1.jsp" %>
  <div class="app-wrapper">
 	   <div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-8 col-12">
-					<form class="m-2 p-2">
-						<h2 class="text-center text-primary">FORM ADD MEDECIN</h2>
-						<div class="mb-2">
-						  <label for="nom" class="form-label">Nom</label>
-						  <input type="text" class="form-control" id="nom" name="nom">
-						</div>
-						<div class="mb-2">
-						  <label for="username" class="form-label">Username</label>
-						  <input type="text" class="form-control" id="username" name="username">
-						</div>
-						<div class="mb-2">
-							<label for="email" class="form-label">Email</label>
-							<input type="email" class="form-control" name="email">
-						  </div>
-						  <div class="mb-2">
-							<label for="exampleInputPassword1" class="form-label">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" name="password">
-						  </div>
-						  <div class="mb-2">
-							<label for="adresse" class="form-label">Adresse</label>
-							<input type="text" class="form-control" id="adresse" name="adresse">
-						  </div>
-						  <div class="mb-2">
-							<label for="telephone" class="form-label">Telephone</label>
-							<input type="text" class="form-control" id="telephone" name="telephone">
-						  </div>
-						  <select class="mb-3 form-select" aria-label="Default select example" name="status">
-							<option selected>Select Status</option>
-							<option value="1">Disponible</option>
-							<option value="0">Non Disponible</option>
-						  </select>
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</form>
-				</div>
+				<div class="col-lg-12 col-12">
+				<h2 class="text-center text-success p-3 m-1">LISTE MEDICAMENT</h2>
+				<form action="pages/SearchBar.jsp">
+					<div class="input-group justify-content-center m-1 p-2">
+					  <div class="form-outline">
+					    <input name="search" style="width: 24rem;" class="form-control" />
+					  </div>
+					  <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
+					</div>
+				</form>
+				<table id="" class="table" >
+				  <thead>
+				    <tr class="table-info">
+				      <th scope="col">ID</th>
+				      <th scope="col">NOM</th>
+				      <th scope="col">LABORATOIRE</th>
+				      <th scope="col">MALADIE</th>
+				       <th class="text-center" scope="col">UPDATE</th>
+				      <th class="text-center" scope="col">DELETE</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  <%
+				  		CMedicamentImp cm=new CMedicamentImp();
+				  		List<Medicament> lm=cm.getAllMedicament();
+				  		for(Medicament m:lm){
+				  %>
+				    <tr>
+				      <td><%= m.getId()  %></td>
+				      <td><%= m.getNom() %></td>
+				      <td><%= m.getLaboratoire()  %></td>
+				      <td><%= m.getMaladie() %></td>
+				      <td class="text-center"><span class="badge bg-warning"><a class="text-dark" href='medicamentaction.jsp?op=update&id=<%= m.getId()  %>'><i class="fas fa-edit"></i></a></span></td>
+				      <td class="text-center"><span class="badge bg-danger"><a class="text-dark" onclick="return confirm('Are you sure to delete this Medcin')" href='medicamentaction.jsp?up=delete&id=<%= m.getId() %>'><i class="fas fa-trash-alt"></i></a></span></td>
+				    </tr>
+				    <% } %>
+				  </tbody>
+				</table>
+			</div>
 			</div>
 	   </div> 
     </div><!--//app-wrapper-->   
-<%@include file="../includes/footer.jsp" %>
+<%@include file="footer1.jsp" %>
 <% }else{
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../login.jsp");
     } 
 %>

@@ -5,5 +5,7 @@ public interface IMedecin {
 	public int modifyMedcin(Medecin md,int id);
 	public Medecin ShowMedecinById(int id);
 	public List<Medecin> getAllMedecin();
+	public Medecin SearchMedecin(String motcle);
+	public List<Medecin> getMedecinDisponible();
 	public int deleteMedcin(int id);
 }

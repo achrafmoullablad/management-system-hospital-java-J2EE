@@ -1,3 +1,10 @@
+<%@page import="Ado.Consultation.Consultation"%>
+<%@page import="Ado.Consultation.CMConsultationImp"%>
+<%@page import="Ado.Patient.Patient"%>
+<%@page import="Ado.Patient.CMPatientImp"%>
+<%@page import="Ado.Medecin.CMedecinImp"%>
+<%@page import="Ado.Medecin.Medecin"%>
+<%@page import="java.util.List"%>
 <%@page import="Ado.Admin.Admin"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -6,41 +13,53 @@
 	if(a!=null){		      
 %> 
 <%@include file="includes/header.jsp" %>
+<style>
+	#mycontent{
+		background: linear-gradient(45deg, greenyellow, dodgerblue);
+		position: absolute;
+		top: 20%;
+		width: 80%;
+	}
+</style>
  <div class="app-wrapper">
-	   <div class="container">
+	   <div class="container" id="mycontent">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 col-12">
-					<form class="m-2 p-2">
-						<h2 class="text-center text-primary">FORM ADD MEDECIN</h2>
+					<%
+						String nomMedecin=request.getParameter("medecin");
+						String nomPatient=request.getParameter("patient");
+						if(nomMedecin!=null && nomPatient!=null){
+							CMConsultationImp cl=new CMConsultationImp();
+							Consultation c=new Consultation(nomMedecin,nomPatient);
+							cl.addConsultation(c);
+						}
+					%>
+					<form class="m-2 p-2" method="POST">
+						<h2 class="text-center text-primary p-2 m-2">FORM ADD CONSULTATION</h2>
 						<div class="mb-2">
-						  <label for="nom" class="form-label">Nom</label>
-						  <input type="text" class="form-control" id="nom" name="nom">
-						</div>
-						<div class="mb-2">
-						  <label for="username" class="form-label">Username</label>
-						  <input type="text" class="form-control" id="username" name="username">
-						</div>
-						<div class="mb-2">
-							<label for="email" class="form-label">Email</label>
-							<input type="email" class="form-control" name="email">
-						  </div>
-						  <div class="mb-2">
-							<label for="exampleInputPassword1" class="form-label">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" name="password">
-						  </div>
-						  <div class="mb-2">
-							<label for="adresse" class="form-label">Adresse</label>
-							<input type="text" class="form-control" id="adresse" name="adresse">
-						  </div>
-						  <div class="mb-2">
-							<label for="telephone" class="form-label">Telephone</label>
-							<input type="text" class="form-control" id="telephone" name="telephone">
-						  </div>
-						  <select class="mb-3 form-select" aria-label="Default select example" name="status">
-							<option selected>Select Status</option>
-							<option value="1">Disponible</option>
-							<option value="0">Non Disponible</option>
+						  <select class="mb-3 form-select" name="medecin">
+						  	<option value="" disabled selected>Select Medecin</option>
+						  	<%
+						  		CMedecinImp cm=new CMedecinImp();
+						  		List<Medecin> lm=cm.getMedecinDisponible();
+						  		for(Medecin m:lm){
+						  	%>
+							<option value="<%= m.getNom() %>"><%= m.getNom()+" "+m.getprenom() %></option>
+							<% } %>
 						  </select>
+						</div>
+						<div class="mb-2">
+						  <select class="mb-3 form-select" name="patient">
+						  	<option value="" disabled selected>Select Patient</option>
+						  	<%
+						  		CMPatientImp cp=new CMPatientImp();
+						  		List<Patient> lp=cp.getAllPatient();
+						  		for(Patient p:lp){
+						  	%>
+							<option value="<%= p.getNom() %>"><%= p.getNom()+" "+p.getPrenom() %></option>
+							<% } %>
+						  </select>
+						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
