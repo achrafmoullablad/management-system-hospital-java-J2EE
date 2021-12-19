@@ -7,9 +7,7 @@
 	<script src="assets/plugins/chart.js/chart.min.js"></script> 
 	<script src="assets/js/charts-demo.js"></script> 
 	<script src="assets/js/index-charts.js"></script>
-	<script src="assets/jquery/jquery.dataTables.min.js"></script>
-	<script src="assets/plugins/bootstrap/js/dataTables.buttons.min.js"></script> 
-	<script src="assets/plugins/bootstrap/js/dataTables.responsive.min.js"></script> 
+	<script src="assets/plugins/chart.js/canvasjs.min.js"></script>
 	<script src="assets/js/app.js"></script>
 </body>
 </html> 

@@ -69,8 +69,8 @@
 							  <select class="mb-3 form-select" required="true" name="medecin">
 						    	 <option value="" disabled selected>Select your option</option>
 						    	<%
-							    	CMedecinImp cp=new CMedecinImp();
-							    	List<Medecin> lm=cp.getMedecinDisponible();
+							    	CMedecinImp cf=new CMedecinImp();
+							    	List<Medecin> lm=cf.getMedecinDisponible();
 						    		for(Medecin m:lm){
 						    	%>
 						    	<option value="<%= m.getNom() %>"><%= m.getNom()%></option>

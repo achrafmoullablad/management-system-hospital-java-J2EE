@@ -38,7 +38,7 @@
 						<h2 class="text-center text-primary p-2 m-2">FORM ADD CONSULTATION</h2>
 						<div class="mb-2">
 						  <select class="mb-3 form-select" name="medecin">
-						  	<option value="" disabled selected>Select Medecin</option>
+						  	<option value="" disabled selected>---Select Medecin---</option>
 						  	<%
 						  		CMedecinImp cm=new CMedecinImp();
 						  		List<Medecin> lm=cm.getMedecinDisponible();
@@ -50,7 +50,7 @@
 						</div>
 						<div class="mb-2">
 						  <select class="mb-3 form-select" name="patient">
-						  	<option value="" disabled selected>Select Patient</option>
+						  	<option value="" disabled selected>---Select Patient---</option>
 						  	<%
 						  		CMPatientImp cp=new CMPatientImp();
 						  		List<Patient> lp=cp.getAllPatient();

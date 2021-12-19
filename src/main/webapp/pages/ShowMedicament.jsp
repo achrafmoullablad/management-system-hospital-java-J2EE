@@ -22,10 +22,9 @@
 					  <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
 					</div>
 				</form>
-				<table id="" class="table" >
+				<table  class="table" >
 				  <thead>
 				    <tr class="table-info">
-				      <th scope="col">ID</th>
 				      <th scope="col">NOM</th>
 				      <th scope="col">LABORATOIRE</th>
 				      <th scope="col">MALADIE</th>
@@ -40,12 +39,11 @@
 				  		for(Medicament m:lm){
 				  %>
 				    <tr>
-				      <td><%= m.getId()  %></td>
 				      <td><%= m.getNom() %></td>
 				      <td><%= m.getLaboratoire()  %></td>
 				      <td><%= m.getMaladie() %></td>
 				      <td class="text-center"><span class="badge bg-warning"><a class="text-dark" href='medicamentaction.jsp?op=update&id=<%= m.getId()  %>'><i class="fas fa-edit"></i></a></span></td>
-				      <td class="text-center"><span class="badge bg-danger"><a class="text-dark" onclick="return confirm('Are you sure to delete this Medcin')" href='medicamentaction.jsp?up=delete&id=<%= m.getId() %>'><i class="fas fa-trash-alt"></i></a></span></td>
+				      <td class="text-center"><span class="badge bg-danger"><a class="text-dark" onclick="return confirm('Are you sure to delete this Medcin')" href='medicamentaction.jsp?op=delete&id=<%= m.getId() %>'><i class="fas fa-trash-alt"></i></a></span></td>
 				    </tr>
 				    <% } %>
 				  </tbody>

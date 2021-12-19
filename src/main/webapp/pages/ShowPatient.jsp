@@ -67,8 +67,8 @@
 			<div class="row justify-content-center">
 			<%
 				CMPatientImp cm=new CMPatientImp();
-				List<Patient> lp=cm.getAllPatient();
-				for(Patient p:lp){
+				List<Patient> l=cm.getAllPatient();
+				for(Patient p:l){
 			
 			%>
 				<div class="col-lg-4 col-md-6 col-12 p-2">

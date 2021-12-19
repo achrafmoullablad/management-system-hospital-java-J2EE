@@ -46,7 +46,6 @@
 				CMConsultationImp cm=new CMConsultationImp();
 				List<Consultation> lc=cm.getAllConsultation();
 				for(Consultation c:lc){
-			
 			%>
 				<div class="col-lg-4 col-md-6 col-12 p-2">
 					<div class="card" style="width: 21rem;" id="mycard">
@@ -57,6 +56,7 @@
 					    <p class="card-text p-2 m-2">Date Consultation : <%= c.getDate() %></p>
 					    <a href="consultationaction.jsp?op=update&id=<%= c.getId() %>" class="btn btn-warning" id="link">Update</a>
 					    <a href="consultationaction.jsp?op=delete&id=<%= c.getId() %>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this one');" id="link">delete</a>
+					    <a href="consultationaction.jsp?op=print&id=<%= c.getId() %>&nommedecin=<%= c.getNomMedecin() %>&nompatient=<%= c.getNomPatient() %>&date=<%= c.getDate() %>" class="btn btn-primary" id="link">Print PDF</a>
 					  </div>
 					</div>
 				</div>
