@@ -43,7 +43,7 @@
 			String date=request.getParameter("date");
 			response.setContentType("application/pdf");
 			try {
-				OutputStream file = new FileOutputStream(new File("C:/Users/hp/Downloads/Learning.com/MiniProjet/PDF/file"+id+".pdf"));
+				OutputStream file = new FileOutputStream(new File("C:/Users/hp/eclipse-workspace/Tutorial2_J2ee/src/main/webapp/PrintPdf/file"+id+".pdf"));
 				Rectangle pagepdf = new Rectangle(720, 720); 
 				pagepdf.setBackgroundColor(BaseColor.LIGHT_GRAY);
 				Document document = new Document(pagepdf);
