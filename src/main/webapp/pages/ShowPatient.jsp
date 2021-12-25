@@ -13,82 +13,54 @@
 		Admin a=(Admin)session.getAttribute("admin");
 		if(a!=null){		      
 	%> 
-<style>
-	#mycard{
-		background-image: linear-gradient(to right, white , lightgreen);
-		border: none;
-	}
-	#mycard:hover{
-		transform: scale(1.05);
-  		box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-	  	-webkit-transition: all 0.2s ease-in;
-	  	-moz-transition: all 0.2s ease-in;
-	  	-ms-transition: all 0.2s ease-in;
-	 	-o-transition: all 0.2s ease-in;
-	 	transition: all 0.2s ease;
-	 	margin-top: 20px;
-	 	font-weight: bold;
-	}
-	h5{
-		font-family: "Times New Roman", Times, serif;
-		font-style: italic;
-		font-size: 1.2rem;
-	}
-	p{
-		color: grid;
-		font-family: "Times New Roman", Times, serif;
-		font-style: italic;
-		font-size: 1.2rem;
-	}
-	#link{
-		font-family: "Times New Roman", Times, serif;
-		font-style: italic;
-		font-size: 1rem;
-	}
-	#mybtn{
-		background-image: linear-gradient(to right, white , lightgreen);
-		border: none;
-	}
-	#mybtn:hover{
-		background-image: linear-gradient(to right,lightgreen, white);
-		border: none;
-	}
-</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#datapatient').DataTable();
+	} );
+</script>
  <div class="app-wrapper">
 	   <div class="container">
-	   		<form action="">
-					<div class="input-group justify-content-center m-1 p-2">
-					  <div class="form-outline">
-					    <input name="search" style="width: 24rem;" class="form-control" />
-					  </div>
-					  <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
-					</div>
-			</form>
 			<div class="row justify-content-center">
-			<%
-				CMPatientImp cm=new CMPatientImp();
-				List<Patient> l=cm.getAllPatient();
-				for(Patient p:l){
-			
-			%>
-				<div class="col-lg-4 col-md-6 col-12 p-2">
-					<div class="card" style="width: 21rem;" id="mycard">
-					  <div class="card-body">
-					    <h5 class="card-title">Patient :<%= p.getPrenom()+" "+p.getNom() %></h5>
-					    <p class="card-text">Email :<%= p.getEmail() %></p>
-					    <p class="card-text">Adresse : <%= p.getAdresse() %></p>
-					    <p class="card-text">Telephone :<%= p.getTelephone() %></p>
-					    <p class="card-text">Nom Medecin :<%= p.getMedecin() %></p>
-					    <a href="patientaction.jsp?op=update&id=<%= p.getId() %>" class="btn btn-warning" id="link">Update</a>
-					    <a href="patientaction.jsp?op=delete&id=<%= p.getId() %>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this one');" id="link">delete</a>
-					  </div>
-					</div>
+			<div class="col-lg-12 col-12">
+				<h2 class="text-center text-success p-2 m-1">LISTE PATIENT</h2>
+					<table id="datapatient" class="table">
+				        <thead>
+				            <tr>
+				                <th>NOM Patient</th>
+				                <th>Prenom Patient</th>
+				                <th>Email Patient</th>
+				                <th>Adresse Patient</th>
+				                <th>Telephone Patient </th>
+				                <th>Nom Medecin</th>
+				                <th>Update</th>
+				                <th>Delete</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+							<%
+								CMPatientImp cm=new CMPatientImp();
+								List<Patient> l=cm.getAllPatient();
+								for(Patient p:l){
+							
+							%>
+								<tr>
+									<td><%= p.getNom() %></td>
+									<td><%= p.getPrenom() %></td>
+									<td><%= p.getEmail() %></td>
+									<td><%= p.getAdresse() %></td>
+									<td><%= p.getTelephone() %></td>
+									<td><%= p.getMedecin() %></td>
+									<td class="text-center"><span class="badge bg-warning"><a href="patientaction.jsp?op=update&id=<%= p.getId() %>" class="text-dark"><i class="fas fa-edit"></i></a></span></td>
+									<td class="text-center"><span class="badge bg-danger"><a href="patientaction.jsp?op=delete&id=<%= p.getId() %>" class="text-dark" onclick="return confirm('Are you sure to delete this one');"><i class="fas fa-trash-alt"></i></a></span></td>
+								</tr>
+							<% } %>
+						</tbody>
+				 </table>
 				</div>
-				<% } %>
 			</div>
 	   </div> 
     </div> 
-<%@include file="../includes/footer.jsp" %>
+<%@include file="footer1.jsp" %>
 <% }else{
         response.sendRedirect("../login.jsp");
     } 

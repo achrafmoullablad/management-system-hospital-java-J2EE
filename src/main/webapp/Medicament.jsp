@@ -23,7 +23,7 @@
 	   		String labo=request.getParameter("labo");
 	   		String maladie=request.getParameter("maladie");
 	   		Medicament m=new Medicament(nom,labo,maladie);
-	   		if(nom!="" && labo!="" && maladie!=""){
+	   		if(nom!=null && labo!=null && maladie!=null){
 	   			cm.addMedicament(m);
 	   		}
 	   	%>

@@ -40,6 +40,7 @@
 		if(request.getParameter("op").equalsIgnoreCase("print")){
 			String nomMedecin=request.getParameter("nommedecin");
 			String nompatient=request.getParameter("nompatient");
+			String nommedicament=request.getParameter("nommedicament");
 			String date=request.getParameter("date");
 			response.setContentType("application/pdf");
 			try {
@@ -54,6 +55,7 @@
 				document.add(new Paragraph("ID Consultation :"+id,f));
 				document.add(new Paragraph("Nom Medecin :"+nomMedecin,f));
 				document.add(new Paragraph("Nom Patient :"+nompatient,f));
+				document.add(new Paragraph("Nom Medicament :"+nommedicament,f));
 				document.add(new Paragraph("Date Consultation :"+date,f));
 				document.close();
 				file.close();

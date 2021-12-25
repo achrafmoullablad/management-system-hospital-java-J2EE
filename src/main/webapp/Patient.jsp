@@ -39,7 +39,7 @@
 						
 					}
 			     %>
-				  <form class="m-2 p-2">
+				  <form class="m-2 p-2" method="POST">
 						<h2 class="text-center text-primary">FORM ADD PATIENT</h2>
 						<div class="mb-2">
 						<div class="mb-2">

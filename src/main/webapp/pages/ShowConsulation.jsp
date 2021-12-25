@@ -1,3 +1,5 @@
+<%@page import="Ado.Medicament.Medicament"%>
+<%@page import="Ado.Medicament.CMedicamentImp"%>
 <%@page import="Ado.Consultation.Consultation"%>
 <%@page import="java.util.List"%>
 <%@page import="Ado.Consultation.CMConsultationImp"%>
@@ -32,40 +34,59 @@
 		font-size: 1.2rem;
 	}
 </style>
-	   <div class="container">
-			<form>
-					<div class="input-group justify-content-center m-1 p-2">
-					  <div class="form-outline">
-					    <input name="search" style="width: 24rem;" class="form-control" />
-					  </div>
-					  <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
-					</div>
-			</form>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#example').DataTable();
+		} );
+	</script>
+	   <div class="container p-2 m-2">
+	   	<a class="btn btn-primary p-2 m-2" href="ChartPage.jsp">Show Chart</a>
 			<div class="row justify-content-center">
-			<%
-				CMConsultationImp cm=new CMConsultationImp();
-				List<Consultation> lc=cm.getAllConsultation();
-				for(Consultation c:lc){
-			%>
-				<div class="col-lg-4 col-md-6 col-12 p-2">
-					<div class="card" style="width: 21rem;" id="mycard">
-					  <div class="card-body">
-					  	<p class="card-text  p-2 m-2">ID Consultation : <%= c.getId() %></p>
-					    <p class="card-text  p-2 m-2">Nom Patient : <%= c.getNomPatient() %></p>
-					    <p class="card-text p-2 m-2">Nom Medecin : <%= c.getNomMedecin() %></p>
-					    <p class="card-text p-2 m-2">Date Consultation : <%= c.getDate() %></p>
-					    <a href="consultationaction.jsp?op=update&id=<%= c.getId() %>" class="btn btn-warning" id="link">Update</a>
-					    <a href="consultationaction.jsp?op=delete&id=<%= c.getId() %>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this one');" id="link">delete</a>
-					    <a href="consultationaction.jsp?op=print&id=<%= c.getId() %>&nommedecin=<%= c.getNomMedecin() %>&nompatient=<%= c.getNomPatient() %>&date=<%= c.getDate() %>" class="btn btn-primary" id="link">Print PDF</a>
-					  </div>
-					</div>
-				</div>
-				<% } %>
+				<div class="col-lg-11 col-12">
+				<h2 class="text-center text-success p-2 m-1">LISTE CONSULTATION</h2>
+					<table id="example" class="table">
+				        <thead>
+				            <tr>
+				                <th>ID Consultation</th>
+				                <th>Date Consultation</th>
+				                <th>Nom Medecin</th>
+				                <th>Nom Patient </th>
+				                <th>Nom Medicament</th>
+				                <th>Update</th>
+				                <th>Delete</th>
+				                <th>Print</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        	<%
+								CMConsultationImp cm=new CMConsultationImp();
+								List<Consultation> lc=cm.getAllConsultation();
+								CMedecinImp ci=new CMedecinImp();
+								CMPatientImp ct=new CMPatientImp();
+								CMedicamentImp cd=new CMedicamentImp();
+								for(Consultation c:lc){
+									Medecin m=ci.ShowMedecinById(c.getIdMedecin());
+									Patient p=ct.ShowPatientById(c.getIdPatient());
+									Medicament d=cd.getMedicament(c.getIdMedicament());
+							%>
+				            <tr>
+				                <td><%= c.getId() %></td>
+				                <td><%= c.getDate() %></td>
+				                <td><%= m.getNom()+" "+m.getprenom()  %></td>
+				                <td><%= p.getNom()+" "+p.getPrenom()  %></td>
+				                <td><%= d.getNom() %></td>
+				                <td><a href="consultationupdate.jsp?op=update&id=<%= c.getId() %>" class="btn btn-warning" id="link"><i class="fas fa-edit"></i></a></td>
+				                <td><a href="consultationaction.jsp?op=delete&id=<%= c.getId() %>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this one');" ><i class="fas fa-trash-alt"></i></a></td>
+				                <td><a href="consultationaction.jsp?op=print&id=<%= c.getId() %>&nommedecin=<%= m.getNom()+" "+m.getprenom() %>&nompatient=<%= p.getNom()+" "+p.getPrenom() %>&nommedicament<%= d.getNom() %>&date=<%= c.getDate() %>" class="btn btn-primary"><i class="fas fa-print"></i></a></td>
+				            </tr>
+				            <% } %>
+				        </tbody>
+				 </table>
 			</div>
 	   </div> 
     </div>   
 <%@include file="footer1.jsp" %>
 <%	}else{
-        response.sendRedirect("../login.jsp");
+        response.sendRedirect("../404.jsp");
     } 
 %>

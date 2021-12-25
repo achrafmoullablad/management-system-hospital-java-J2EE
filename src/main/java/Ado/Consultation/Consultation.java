@@ -2,14 +2,16 @@ package Ado.Consultation;
 import java.util.Date;
 public class Consultation {
 	private int id;
-	private String nomMedecin;
-	private String nomPatient;
+	private int idMedecin;
+	private int idPatient;
+	private int idMedicament;
 	private Date date;
 	public Consultation() {
 	}
-	public Consultation(String nomMedecin, String nomPatient) {
-		this.nomMedecin = nomMedecin;
-		this.nomPatient = nomPatient;
+	public Consultation(int idMedecin, int idPatient, int idMedicament) {
+		this.idMedecin = idMedecin;
+		this.idPatient = idPatient;
+		this.idMedicament = idMedicament;
 	}
 	public int getId() {
 		return id;
@@ -17,17 +19,23 @@ public class Consultation {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNomMedecin() {
-		return nomMedecin;
+	public int getIdMedecin() {
+		return idMedecin;
 	}
-	public void setNomMedecin(String nomMedecin) {
-		this.nomMedecin = nomMedecin;
+	public void setIdMedecin(int idMedecin) {
+		this.idMedecin = idMedecin;
 	}
-	public String getNomPatient() {
-		return nomPatient;
+	public int getIdPatient() {
+		return idPatient;
 	}
-	public void setNomPatient(String nomPatient) {
-		this.nomPatient = nomPatient;
+	public void setIdPatient(int idPatient) {
+		this.idPatient = idPatient;
+	}
+	public int getIdMedicament() {
+		return idMedicament;
+	}
+	public void setIdMedicament(int idMedicament) {
+		this.idMedicament = idMedicament;
 	}
 	public Date getDate() {
 		return date;
@@ -37,7 +45,7 @@ public class Consultation {
 	}
 	@Override
 	public String toString() {
-		return "Consultation [id=" + id + ", nomMedecin=" + nomMedecin + ", nomPatient=" + nomPatient + ", date=" + date
-				+ "]";
+		return "Consultation [id=" + id + ", idMedecin=" + idMedecin + ", idPatient=" + idPatient + ", idMedicament="
+				+ idMedicament + ", date=" + date + "]";
 	}
 }

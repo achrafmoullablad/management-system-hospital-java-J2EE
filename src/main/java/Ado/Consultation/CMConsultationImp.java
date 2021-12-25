@@ -12,7 +12,7 @@ public class CMConsultationImp implements IMConsulation{
 	@Override
 	public int addConsultation(Consultation c) {
 		ado.connect();
-		String sql="INSERT INTO consultation(id,nomMedcin,nomPatient) VALUES(null,'"+c.getNomMedecin()+"','"+c.getNomPatient()+"')";
+		String sql="INSERT INTO consultation(id,idMedcin,idPatient,idMedicament) VALUES(null,'"+c.getIdMedecin()+"','"+c.getIdPatient()+"','"+c.getIdMedicament()+"')";
 		int nb=ado.MAJ(sql);
 		ado.disconnect();
 		return nb;
@@ -20,7 +20,7 @@ public class CMConsultationImp implements IMConsulation{
 	@Override
 	public int modifyConsultation(Consultation c, int id) {
 		ado.connect();
-		String sql="UPDATE consultation SET nomMedcin='"+c.getNomMedecin()+"', nomPatient='"+c.getNomPatient()+"' WHERE id='"+id+"')";
+		String sql="UPDATE consultation SET idMedcin='"+c.getIdMedecin()+"', idPatient='"+c.getIdPatient()+"',idMedicament='"+c.getIdMedicament()+"' WHERE id='"+id+"'";
 		int nb=ado.MAJ(sql);
 		ado.disconnect();
 		return nb;
@@ -33,9 +33,9 @@ public class CMConsultationImp implements IMConsulation{
 		ResultSet rs=ado.select(sql);
 		try {
 			while(rs.next()) {
-				c=new Consultation(rs.getString(2),rs.getString(3));
+				c=new Consultation(rs.getInt(2),rs.getInt(3),rs.getInt(4));
 				c.setId(rs.getInt(1));	
-				c.setDate(rs.getDate(4));
+				c.setDate(rs.getDate(5));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -52,9 +52,9 @@ public class CMConsultationImp implements IMConsulation{
 		ResultSet rs=ado.select(sql);
 		try {
 			while(rs.next()) {
-				c=new Consultation(rs.getString(2),rs.getString(3));
+				c=new Consultation(rs.getInt(2),rs.getInt(3),rs.getInt(4));
 				c.setId(rs.getInt(1));	
-				c.setDate(rs.getDate(4));
+				c.setDate(rs.getDate(5));
 				lc.add(c);
 			}
 		} catch (SQLException e) {

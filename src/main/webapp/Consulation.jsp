@@ -1,3 +1,5 @@
+<%@page import="Ado.Medicament.Medicament"%>
+<%@page import="Ado.Medicament.CMedicamentImp"%>
 <%@page import="Ado.Consultation.Consultation"%>
 <%@page import="Ado.Consultation.CMConsultationImp"%>
 <%@page import="Ado.Patient.Patient"%>
@@ -26,12 +28,15 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8 col-12">
 					<%
-						String nomMedecin=request.getParameter("medecin");
-						String nomPatient=request.getParameter("patient");
-						if(nomMedecin!=null && nomPatient!=null){
+						try{
+							int Medecin=Integer.parseInt(request.getParameter("medecin"));
+							int Patient=Integer.parseInt(request.getParameter("patient"));
+							int Medicament=Integer.parseInt(request.getParameter("medicament"));
 							CMConsultationImp cl=new CMConsultationImp();
-							Consultation c=new Consultation(nomMedecin,nomPatient);
+							Consultation c=new Consultation(Medecin,Patient,Medicament);
 							cl.addConsultation(c);
+						}catch(NumberFormatException e){
+							
 						}
 					%>
 					<form class="m-2 p-2" method="POST">
@@ -44,7 +49,7 @@
 						  		List<Medecin> lm=cm.getMedecinDisponible();
 						  		for(Medecin m:lm){
 						  	%>
-							<option value="<%= m.getNom() %>"><%= m.getNom()+" "+m.getprenom() %></option>
+							<option value="<%= m.getId()%>"><%= m.getNom()+" "+m.getprenom() %></option>
 							<% } %>
 						  </select>
 						</div>
@@ -56,8 +61,18 @@
 						  		List<Patient> lp=cp.getAllPatient();
 						  		for(Patient p:lp){
 						  	%>
-							<option value="<%= p.getNom() %>"><%= p.getNom()+" "+p.getPrenom() %></option>
+							<option value="<%= p.getId() %>"><%= p.getNom()+" "+p.getPrenom() %></option>
 							<% } %>
+						  </select>
+						  <select class="mb-3 form-select" name="medicament">
+						  	<option value="" disabled selected>---Select Medicament---</option>
+						  	<% 
+						  		CMedicamentImp cd=new CMedicamentImp();
+						  		List<Medicament> ld=cd.getAllMedicament();
+						  		for(Medicament d:ld){
+						  	%>
+						  	<option value="<%= d.getId() %>"><%= d.getNom() %></option>
+						 	 <% } %>
 						  </select>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>

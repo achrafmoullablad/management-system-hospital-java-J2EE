@@ -11,7 +11,10 @@
     <meta name="description" content="PARMACO">
     <link rel="stylesheet" href="assets/font-awesome/all.min.css">
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/dataTables.min.css">
+    <link rel="stylesheet" href="assets/plugins/datatables/jquery.dataTables.css">
+    <link rel="stylesheet" href="assets/plugins/datatables/jquery.dataTables_themeroller.css">
+    <script src="assets/plugins/datatables/jquery-1.7.1.min.js"></script>
+    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="assets/css/portal.css">
 </head> 
 <body class="app">    	

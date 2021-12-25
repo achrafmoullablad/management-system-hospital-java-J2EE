@@ -9,20 +9,17 @@
 	if(a!=null){		      
 %> 
 <%@include file="header1.jsp" %>
+<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#tabledata').DataTable();
+		} );
+</script>
  <div class="app-wrapper">
-	   <div class="container">
+	   <div class="container p-2 m-2">
 			<div class="row justify-content-center">
-				<div class="col-lg-12 col-12">
+				<div class="col-lg-11 col-12">
 				<h2 class="text-center text-success p-3 m-1">LISTE MEDICAMENT</h2>
-				<form action="pages/SearchBar.jsp">
-					<div class="input-group justify-content-center m-1 p-2">
-					  <div class="form-outline">
-					    <input name="search" style="width: 24rem;" class="form-control" />
-					  </div>
-					  <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
-					</div>
-				</form>
-				<table  class="table" >
+				<table id="tabledata" class="table" >
 				  <thead>
 				    <tr class="table-info">
 				      <th scope="col">NOM</th>
@@ -50,6 +47,7 @@
 				</table>
 			</div>
 			</div>
+			
 	   </div> 
     </div><!--//app-wrapper-->   
 <%@include file="footer1.jsp" %>

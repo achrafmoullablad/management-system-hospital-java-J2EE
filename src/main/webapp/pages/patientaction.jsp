@@ -24,13 +24,18 @@
 	Admin a=(Admin)session.getAttribute("admin");
 	if(a!=null){		      
 %>
-	<%
+		<%
 			CMPatientImp cm=new CMPatientImp();
 			int id=Integer.parseInt(request.getParameter("id"));
 			if(request.getParameter("op").equalsIgnoreCase("delete")){
 				cm.deletePatient(id);
+		%>
+		<script type="text/javascript">
+			window.location.href="ShowPatient.jsp";
+		</script>
+		<%
 			}
-			%>
+		%>
 		<div class="app-wrapper">
 		   <div class="container" id="mycontent">
 				<div class="row justify-content-center">
@@ -92,8 +97,11 @@
 			if(nom!=null && prenom!=null && email!=null && adresse!=null && telephone!=null){
 				Patient p=new Patient(prenom,nom,email,adresse,telephone,medecin);
 				cm.modifyPatient(p,id);
-			}
-	%>
+		%>
+		<script type="text/javascript">
+			window.location.href="ShowPatient.jsp";
+		</script>
+		<%}%>
  </div> 
  </div>
 <%@include file="footer1.jsp" %>

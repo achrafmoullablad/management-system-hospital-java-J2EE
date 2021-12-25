@@ -1,3 +1,4 @@
+<%@page import="Ado.Cado"%>
 <%@page import="com.mysql.cj.x.protobuf.MysqlxNotice.GroupReplicationStateChangedOrBuilder"%>
 <%@page import="Ado.Medicament.Medicament"%>
 <%@page import="Ado.Medicament.CMedicamentImp"%>
@@ -15,6 +16,7 @@
 	Admin a=(Admin)session.getAttribute("admin");
 	if(a!=null){		      
 %> 
+
 <%@include file="includes/header.jsp" %>
     
     <div class="app-wrapper">
@@ -133,7 +135,7 @@
 									</select>
 							    </div>
 						        <div class="chart-container">
-				                    <canvas id="canvas-barchart"></canvas>
+				                    <div id="chartContainer" style="height: 360px; width: 100%;margin-top:30px;"></div>	
 						        </div>
 					        </div><!--//app-card-body-->
 				        </div><!--//app-card-->

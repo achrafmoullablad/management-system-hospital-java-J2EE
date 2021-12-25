@@ -50,7 +50,7 @@
 									        <div class="item-data">Administrator</div>
 									    </div><!--//col-->
 									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">Change</a>
+										    <a class="btn-sm app-btn-secondary" href="pages/changePasswordAdmin.jsp">Change Password</a>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
