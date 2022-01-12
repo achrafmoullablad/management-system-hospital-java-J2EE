@@ -29,7 +29,7 @@
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
 				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.jsp"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
-					<h2 class="auth-heading text-center mb-5">Log in to PARMACO</h2>
+					<h2 class="auth-heading text-center mb-5">LOGIN TO MEDITECH</h2>
 			        <div class="auth-form-container text-start">
 			       		 <%
 							CMAdminImp ma=new CMAdminImp();

@@ -51,7 +51,7 @@
 									<td><%= p.getTelephone() %></td>
 									<td><%= p.getMedecin() %></td>
 									<td class="text-center"><span class="badge bg-warning"><a href="patientaction.jsp?op=update&id=<%= p.getId() %>" class="text-dark"><i class="fas fa-edit"></i></a></span></td>
-									<td class="text-center"><span class="badge bg-danger"><a href="patientaction.jsp?op=delete&id=<%= p.getId() %>" class="text-dark" onclick="return confirm('Are you sure to delete this one');"><i class="fas fa-trash-alt"></i></a></span></td>
+									<td class="text-center"><span class="badge bg-danger"><a href="#" id="enable" class="text-dark" onclick="return confirm('Are you sure to delete this one');"><i class="fas fa-trash-alt"></i></a></span></td>
 								</tr>
 							<% } %>
 						</tbody>

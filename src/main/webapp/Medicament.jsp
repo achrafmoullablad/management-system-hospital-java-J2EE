@@ -24,7 +24,15 @@
 	   		String maladie=request.getParameter("maladie");
 	   		Medicament m=new Medicament(nom,labo,maladie);
 	   		if(nom!=null && labo!=null && maladie!=null){
-	   			cm.addMedicament(m);
+	   			int nb=cm.addMedicament(m);
+	   			if(nb==1){
+	   	%>
+			   	<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<strong>Notification !!!</strong> Medicament Ajouter avec success .
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+	   	<%
+	   			}
 	   		}
 	   	%>
 			<div class="row justify-content-center">

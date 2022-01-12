@@ -40,7 +40,7 @@
 				      <td><%= m.getLaboratoire()  %></td>
 				      <td><%= m.getMaladie() %></td>
 				      <td class="text-center"><span class="badge bg-warning"><a class="text-dark" href='medicamentaction.jsp?op=update&id=<%= m.getId()  %>'><i class="fas fa-edit"></i></a></span></td>
-				      <td class="text-center"><span class="badge bg-danger"><a class="text-dark" onclick="return confirm('Are you sure to delete this Medcin')" href='medicamentaction.jsp?op=delete&id=<%= m.getId() %>'><i class="fas fa-trash-alt"></i></a></span></td>
+				      <td class="text-center"><span class="badge bg-danger"><a href="#" class="text-dark" id="enable"><i class="fas fa-trash-alt"></i></a></span></td>
 				    </tr>
 				    <% } %>
 				  </tbody>

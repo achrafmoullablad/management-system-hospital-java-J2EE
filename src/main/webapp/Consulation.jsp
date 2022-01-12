@@ -34,7 +34,15 @@
 							int Medicament=Integer.parseInt(request.getParameter("medicament"));
 							CMConsultationImp cl=new CMConsultationImp();
 							Consultation c=new Consultation(Medecin,Patient,Medicament);
-							cl.addConsultation(c);
+							int nb=cl.addConsultation(c);
+							if(nb==1){
+					%>
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+							  <strong>Notification !!!</strong> Medicament Ajouter avec success .
+							  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+					<%
+							}
 						}catch(NumberFormatException e){
 							
 						}

@@ -46,7 +46,7 @@
 				      <td><%= md.getTelephone() %></td>
 				      <td><%= md.getStatus() %></td>
 				      <td class="text-center"><span class="badge bg-warning"><a class="text-dark" href='pages/updateMedcin.jsp?id=<%= md.getId()  %>'><i class="fas fa-edit"></i></a></span></td>
-				      <td class="text-center"><span class="badge bg-danger"><a class="text-dark" onclick="return confirm('Are you sure to delete this Medcin')" href='pages/deleteMedcin.jsp?id=<%= md.getId() %>'><i class="fas fa-trash-alt"></i></a></span></td>
+				      <td class="text-center"><span class="badge bg-danger"><a href="#" class="text-dark" id="btnto"><i class="fas fa-trash-alt"></i></a></span></td>
 				    </tr>
 				    <% } %>
 				  </tbody>
@@ -55,7 +55,10 @@
 		</div>
 	</div> 
 </div> 
-  
+<script>
+	var btn = document.getElementById('btnto');
+	btn.disabled = false;
+</script>
 <%@include file="includes/footer.jsp" %>
 <% }else{
         response.sendRedirect("login.jsp");

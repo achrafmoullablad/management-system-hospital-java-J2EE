@@ -60,7 +60,6 @@ String dataPoints = null;
 	<div class="app-wrapper">
 		 <div class="app-content pt-3 p-md-3 p-lg-4">
 			  <div class="container-xl">
-			  		<%= dataPoints %>
 					<div id="chartContainer" style="height: 360px; width: 100%;margin-top:30px;"></div>	
 				</div>
 		 </div>

@@ -34,7 +34,15 @@
 					if(prenom!=null && nom!=null && email!=null && adresse!=null && telephone!=null && medecin!=null){
 						Patient p=new Patient(prenom,nom,email,adresse,telephone,medecin);
 						CMPatientImp cp=new CMPatientImp();
-						cp.addPatient(p);
+						int nb=cp.addPatient(p);
+						if(nb==1){
+					%>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+					  <strong>Notification !!!</strong> Patient Ajouter avec success .
+					  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<%
+						}
 					}else{
 						
 					}

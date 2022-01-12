@@ -33,7 +33,12 @@
 							CMedecinImp cm=new CMedecinImp();
 							int nb=cm.addMedcien(md);
 							if(nb==1){
-								out.print("ADD Medecin With success !!!");
+					%>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+					  <strong>Notification !!!</strong> Medecin Ajouter avec success .
+					  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<%
 							}
 						}
 					%>
