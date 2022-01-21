@@ -40,7 +40,6 @@
 		} );
 	</script>
 	   <div class="container p-2 m-2">
-	   	<a class="btn btn-primary p-2 m-2" href="ChartPage.jsp">Show Chart</a>
 			<div class="row justify-content-center">
 				<div class="col-lg-11 col-12">
 				<h2 class="text-center text-success p-2 m-1">LISTE CONSULTATION</h2>

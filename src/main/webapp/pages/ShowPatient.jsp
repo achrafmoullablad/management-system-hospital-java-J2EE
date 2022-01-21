@@ -12,10 +12,28 @@
 	<%
 		Admin a=(Admin)session.getAttribute("admin");
 		if(a!=null){		      
-	%> 
+	%>
+<style>
+    .modal-header {
+       background: #5cb377;
+       color: #fff;
+    }
+</style> 
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#datapatient').DataTable();
+		$('.editbtn').on('click',function(){
+			$tr=$(this).closest('tr');
+			var data=$tr.children("td").map(function(){
+				return $(this).text();
+			}).get();
+			console.log(data);
+			$('#nom').val(data[0]);
+			$('#prenom').val(data[1]);
+			$('#email').val(data[2]);
+			$('#adresse').val(data[3]);
+			$('#telephone').val(data[4]);
+		});
 	} );
 </script>
  <div class="app-wrapper">
@@ -32,8 +50,8 @@
 				                <th>Adresse Patient</th>
 				                <th>Telephone Patient </th>
 				                <th>Nom Medecin</th>
-				                <th>Update</th>
-				                <th>Delete</th>
+				                <th class="text-center">Update</th>
+				                <th class="text-center">Vue</th>
 				            </tr>
 				        </thead>
 				        <tbody>
@@ -50,16 +68,50 @@
 									<td><%= p.getAdresse() %></td>
 									<td><%= p.getTelephone() %></td>
 									<td><%= p.getMedecin() %></td>
-									<td class="text-center"><span class="badge bg-warning"><a href="patientaction.jsp?op=update&id=<%= p.getId() %>" class="text-dark"><i class="fas fa-edit"></i></a></span></td>
-									<td class="text-center"><span class="badge bg-danger"><a href="#" id="enable" class="text-dark" onclick="return confirm('Are you sure to delete this one');"><i class="fas fa-trash-alt"></i></a></span></td>
+									<td><a href="patientaction.jsp?op=update&id=<%= p.getId() %>" class="btn btn-warning text-dark"><i class="fas fa-edit"></i></a></td>
+									<td class="text-center"><a href="?idpatient=<%= p.getId() %>" class="btn btn-secondary text-dark editbtn" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-eye"></i></a></td>
 								</tr>
 							<% } %>
 						</tbody>
 				 </table>
 				</div>
 			</div>
+			<div class="modal" id="myModal">
+	            <div class="modal-dialog">
+	                <div class="modal-content">
+	                    <div class="modal-header">
+	                        <h5 class="modal-title text-white">Information de Patient</h5>
+	                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+	                    </div>
+	                    <div class="modal-body">
+	                        <form>
+	                            <div class="mb-2">
+	                                <label class="form-label required">Nom</label>
+	                                <input type="text" class="form-control" id="nom" readonly>
+	                            </div>
+	                            <div class="mb-2">
+	                                <label class="form-label required">Prenom</label>
+	                                <input type="text" class="form-control" id="prenom" readonly>
+	                            </div>
+	                            <div class="mb-2">
+	                                <label class="form-label required">Email</label>
+	                                <input type="email" class="form-control" id="email" readonly>
+	                            </div>
+	                            <div class="mb-2">
+	                                <label class="form-label required">Adresse</label>
+	                                <input type="text" class="form-control" id="adresse" readonly>
+	                            </div>
+	                            <div class="mb-2">
+	                                <label class="form-label required">Telephone</label>
+	                                <input type="text" class="form-control" id="telephone" readonly>
+	                            </div>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+	         </div>
 	   </div> 
-    </div> 
+</div> 
 <%@include file="footer1.jsp" %>
 <% }else{
         response.sendRedirect("../login.jsp");

@@ -12,6 +12,7 @@
 <html lang="en"> 
 <head>
     <title>Home</title>
+    <link rel="icon" href="../assets/images/app-logo.svg" type="image/svg" sizes="16x16">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,7 +115,7 @@
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.jsp"><img class="logo-icon me-2" src="../assets/images/app-logo.svg" alt="logo"><span class="logo-text">MEDITECH</span></a>
+		            <a class="app-logo" href="../index.jsp"><img class="logo-icon me-2" src="../assets/images/app-logo.svg" alt="logo"><span class="logo-text">MEDITECH</span></a>
 	
 		        </div><!--//app-branding-->  
 		        
